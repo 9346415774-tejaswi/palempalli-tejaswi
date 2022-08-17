@@ -1,0 +1,171 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace String_Assignment
+{
+    internal class Program
+    {
+        static void q1a()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str[12]);
+        }
+        static void q1b()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.Contains("is"));
+
+        }
+        static void q1c()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            var str1 = " and killed it";
+            str += str1;
+            Console.WriteLine(str);
+        }
+        static void q1d()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.EndsWith("dogs"));
+        }
+        static void q1e()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            var str1 = "The quick brown Fox jumps over the lazy Dog";
+            if (str == str1)
+            {
+                Console.WriteLine(true);
+            }
+            else
+            {
+                Console.WriteLine(false);
+            }
+        }
+        static void q1f()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            string str2 = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+            if (str2 == str)
+            {
+                Console.WriteLine(true);
+            }
+            else
+            {
+                Console.WriteLine(false);
+            }
+        }
+        static void q1g()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.Length);
+        }
+        static void q1h()
+        {
+
+        }
+        static void q1i()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            str = str.Replace("The", "A");
+            Console.WriteLine(str);
+        }
+        static void q1j()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.Substring(0, 19));
+            Console.WriteLine(str.Substring(20));
+        }
+        static void q1k()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            string str1 = str.Substring(0, 19);
+            string str2 = str.Substring(20);
+            Console.WriteLine(str1.Substring(str1.Length - 3));
+            Console.WriteLine(str2.Substring(str2.Length - 3));
+        }
+        static void q1l()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.ToUpper());
+            Console.WriteLine(str.ToLower());
+        }
+        static void q1m()
+        {
+            var str = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(str.IndexOf('a'));
+            Console.WriteLine(str.LastIndexOf('e'));
+        }
+
+        static void q1()
+        {
+            int n1 = Convert.ToInt32(Console.ReadLine());
+            int n2 = Convert.ToInt32(Console.ReadLine());
+            n1 = n1 + n2;
+            n2 = n1 - n2;
+            n1 = n1 - n2;
+            Console.WriteLine($"{n1},{n2}");
+        }
+        static void q2()
+        {
+            Console.WriteLine("Eggs Solution");
+            int N = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"{N / 144} gross");
+            N = N % 144;
+            Console.WriteLine($"{N / 12} dozen");
+            Console.WriteLine($"{N % 12} eggs");
+        }
+        static void q3()
+        {
+            int year = Convert.ToInt32(Console.ReadLine());
+            if (year % 4 == 0)
+            {
+                Console.WriteLine("Entered year is Leap year");
+            }
+            else
+            {
+                Console.WriteLine("Entered Year is not a Leap year");
+            }
+        }
+        static void q4()
+        {
+            int r = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int g = Convert.ToInt32(Console.ReadLine());
+            if (r != 0 & b == 0 & g == 0)
+            {
+                Console.WriteLine("Reddish");
+            }
+            else if (r == 0 & b != 0 & g == 0)
+            {
+                Console.WriteLine("Bluish");
+            }
+            else
+            {
+                Console.WriteLine("Greenish");
+            }
+        }
+        static void Main(string[] args)
+        {
+            q1a();
+            q1b();
+            q1c();
+            q1d();
+            q1e();
+            q1f();
+            q1g();
+            q1h();
+            q1i();
+            q1j();
+            q1k();
+            q1l();
+            q1m();
+            q1();
+            q2();
+            q3();
+            q4();
+        }
+    }
+}
