@@ -1,0 +1,205 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Collection_Assignment
+{
+
+    public class Employee
+    {
+        public int id;
+        public string name, employees;
+        public int add_id;
+    }
+    public class Address
+    {
+        public int add_id;
+        public string address_name;
+    }
+    class GFG
+    {
+
+        // Driver code
+        public static void Q5()
+        {
+
+            // Enter data for Employee list
+            List<Employee> employees = new List<Employee>()
+    {
+         new Employee{ id = 234, name = "Rahul"},
+         new Employee{ id = 244, name = "Subham"},
+         new Employee{ id = 334, name = "Deepak"},
+        new Employee{ id = 533, name = "Suraj"},
+    };
+
+
+            foreach (var e in employees)
+            {
+                Console.WriteLine("ID: " + e.id +
+                            "--> Name: " + e.name);
+            }
+        }
+    }
+
+
+
+
+    internal class Program
+    {
+
+        static void Q3()
+        {
+
+            int i;
+            int[] a = new int[30];
+            Console.WriteLine("enter the number of values to be sort:");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (i = 0; i < n; i++)
+            {
+                Console.WriteLine("enter the No" + (i+1) + ":");
+                a[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            for (i = 0; i < n-1; i++)
+            {
+                for (int j = i+1; j < n; j++)
+                {
+                    if (a[i] > a[j])
+                    {
+                        int temp = a[j];
+                        a[j] = a[i];
+                        a[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("Asscending sort:");
+            for (i = 0; i < n; i++)
+            {
+                Console.WriteLine(a[i] + " ");
+            }
+            Console.ReadKey();
+        }
+
+        static void Q4()
+        {
+
+            List<string> students = new List<string>(){ "Ganesh", "aravind",
+                                                "ksheersagar", "sai","pawan"};
+
+            var result = students.OrderByDescending(n => n);
+
+
+            Console.Write("Sorted list in Descending order:\n");
+            foreach (string student in result)
+            {
+                Console.Write(student + " ");
+            }
+        }
+
+        static void Q6()
+        {
+            int Bookid;
+            int Bookname;
+
+            {
+                Hashtable Bookstore = new Hashtable();
+                Bookstore.Add(678, "chemistry");
+                Bookstore.Add(598, "physics");
+                Bookstore.Add(457, "maths");
+                Console.WriteLine("key and value pairs from Bookstore:");
+                foreach (var ele2 in Bookstore.Keys)
+                {
+                    Console.WriteLine("{0} and {1}", ele2,
+                        Bookstore[ele2]);
+                }
+            }
+        }
+
+        static void Q7()
+        {
+
+            ArrayList std_name = new ArrayList();
+            std_name.Add("Tejasvi");
+            std_name.Add("Pavan");
+            std_name.Add("Shivam");
+            std_name.Add("Pradeep");
+            Console.WriteLine("Stuident details are:");
+            foreach (object obj in std_name)
+            {
+                Console.WriteLine(obj);
+            }
+        }
+        public class Employee
+        {
+
+
+            int emp_id;
+            int emp_age;
+            string emp_name;
+            string emp_designition;
+
+
+            public override string ToString()
+            {
+                return emp_id + " " + emp_name + " " + emp_age + " " + emp_designition;
+            }
+
+
+            static void Main(string[] args)
+
+           // public static void Q8()
+            {
+                Q3();
+                Q4();
+                
+                Q6();
+                Q7();
+
+
+                List<Employee> emp1 = new List<Employee>()
+    {
+
+
+        new Employee{ emp_id = 101, emp_name = "Lokesh", emp_age = 32,emp_designition
+        ="project manager"},
+        new Employee{ emp_id = 102, emp_name = "Manish", emp_age = 26,emp_designition
+        ="teamlead"},
+        new Employee{ emp_id = 103, emp_name = "Rabindra", emp_age = 35,emp_designition
+        ="Programmanager"},
+        new Employee{ emp_id = 104, emp_name = "Alok", emp_age = 28,emp_designition
+        ="junior programmer"},
+        new Employee{ emp_id = 105, emp_name = "Roni", emp_age = 48,emp_designition
+        ="seniorprogrammer"},
+
+    };
+
+
+                IEnumerable<Employee> Query =
+                from employee in emp1 where employee.emp_age > 24 select employee;
+
+
+                Console.WriteLine("ID  Name  Age designition");
+                Console.WriteLine();
+                foreach (Employee e in Query)
+                {
+
+
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            Q3();
+            Q4();
+            Q6();
+            Q7();
+            
+        }
+    }
+
+}
