@@ -1,0 +1,184 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Constuctor_Assignment
+{
+
+    public class Person
+    {
+        private string FirstName;
+        private string LastName;
+        private string email;
+        private DateTime DateOfBirth;
+
+        public Person(string fName, string lName, string mail, DateTime bDate)
+        {
+            FirstName = fName;
+            LastName = lName;
+            email = mail;
+            DateOfBirth = bDate;
+        }
+
+        public bool IsAdult
+        {
+            get
+            {
+                bool result = false;
+                if (DateTime.Now.Year - DateOfBirth.Year >= 18)
+                    result = true;
+                return result;
+            }
+        }
+
+        public string Sunsing
+        {
+            get
+            {
+                string result = "";
+                if ((DateOfBirth.Month >= 3 && (DateOfBirth.Day >= 21 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 4 && (DateOfBirth.Day <= 19 || DateOfBirth.Day >= 1)))
+                    result = "Aries";
+                if ((DateOfBirth.Month >= 4 && (DateOfBirth.Day >= 20 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 5 && (DateOfBirth.Day <= 20 || DateOfBirth.Day >= 1)))
+                    result = "Taurus";
+                if ((DateOfBirth.Month >= 5 && (DateOfBirth.Day >= 21 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 6 && (DateOfBirth.Day <= 21 || DateOfBirth.Day >= 1)))
+                    result = "Gemini";
+                if ((DateOfBirth.Month >= 6 && (DateOfBirth.Day >= 21 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 7 && (DateOfBirth.Day <= 22 || DateOfBirth.Day >= 1)))
+                    result = "Cancer";
+                if ((DateOfBirth.Month >= 7 && (DateOfBirth.Day >= 23 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 8 && (DateOfBirth.Day <= 22 || DateOfBirth.Day >= 1)))
+                    result = "Leo";
+                if ((DateOfBirth.Month >= 8 && (DateOfBirth.Day >= 23 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 9 && (DateOfBirth.Day <= 22 || DateOfBirth.Day >= 1)))
+                    result = "Virgo";
+                if ((DateOfBirth.Month >= 9 && (DateOfBirth.Day >= 23 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 10 && (DateOfBirth.Day <= 23 || DateOfBirth.Day >= 1)))
+                    result = "Libra";
+                if ((DateOfBirth.Month >= 10 && (DateOfBirth.Day >= 24 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 11 && (DateOfBirth.Day <= 21 || DateOfBirth.Day >= 1)))
+                    result = "Scorpius";
+                if ((DateOfBirth.Month >= 11 && (DateOfBirth.Day >= 22 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 12 && (DateOfBirth.Day <= 21 || DateOfBirth.Day >= 1)))
+                    result = "Sagittarius";
+                if ((DateOfBirth.Month >= 12 && (DateOfBirth.Day >= 22 || DateOfBirth.Day <= 31)) || (DateOfBirth.Month <= 1 && (DateOfBirth.Day <= 19 || DateOfBirth.Day >= 1)))
+                    result = "Capricornus";
+                if ((DateOfBirth.Month >= 1 && (DateOfBirth.Day >= 20 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 2 && (DateOfBirth.Day <= 18 || DateOfBirth.Day >= 1)))
+                    result = "Aquarius";
+                if ((DateOfBirth.Month >= 2 && (DateOfBirth.Day >= 19 || DateOfBirth.Day <= 31)) && (DateOfBirth.Month <= 3 && (DateOfBirth.Day <= 20 || DateOfBirth.Day >= 1)))
+                    result = "Pisces";
+
+                return result;
+            }
+        }
+
+        public bool Isbirthday
+        {
+            get
+            {
+                bool result = false;
+                if (DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day == DateOfBirth.Day)
+                    result = true;
+                return result;
+            }
+        }
+
+
+        public string ScreenName
+        {
+            get
+            {
+                string result = "";
+                result = String.Format("{0}{1}{2}{3}{4}", LastName.Substring(0, 2), FirstName, DateOfBirth.Day, DateOfBirth.Month, DateOfBirth.Year);
+                return result;
+            }
+        }
+    }
+
+    public class Employee : Person
+    {
+        public double Salary { get; set; }
+
+        public Employee(string fName, string lName, string mail, DateTime bDate, double sal) : base(fName, lName, mail, bDate)
+        {
+            Salary = sal;
+        }
+    }
+    internal class Program
+    {
+
+
+        static void Q3()
+        {
+
+            double l, b, r, a, ar_rec, ar_cir, ar_tri, ar_squ;
+            double PI = 22/7;
+            Console.WriteLine("Enter the Length and Breadth : ");
+            l = Convert.ToDouble(Console.ReadLine());
+            b = Convert.ToDouble(Console.ReadLine());
+            ar_rec = (l * b);
+            Console.WriteLine("Enter the radius of the circle : ");
+            r = Convert.ToDouble(Console.ReadLine());
+            ar_cir = r * PI * r;
+            ar_tri = 0.5 * l * b;
+            Console.WriteLine("Enter the side of the square : ");
+            a = Convert.ToDouble(Console.ReadLine());
+            ar_squ = a * a;
+            Console.WriteLine("Area of Rectangle : {0}", ar_rec);
+            Console.WriteLine("Area of Circle : {0}", ar_cir);
+            Console.WriteLine("Area of Triangle : {0}", ar_tri);
+            Console.WriteLine("Area of Square : {0}", ar_squ);
+            
+        }
+
+            public static void Main()
+            {
+
+            Employee employee = new Employee("John", "Doe", "jd@gmail.com", new DateTime(2000, 12, 01), 10000);
+
+            Console.WriteLine("Person.IsAdult = {0}", employee.IsAdult);
+            Console.WriteLine("Person.Sunsing = {0}", employee.Sunsing);
+            Console.WriteLine("Person.Isbirthday = {0}", employee.Isbirthday);
+            Console.WriteLine("Person.ScreenName = {0}", employee.ScreenName);
+            Console.WriteLine("Person.Salary = {0}", employee.Salary);
+
+            Console.WriteLine();
+            Console.WriteLine();
+            
+
+            Building buildingObj = new Building("Flat", "2BHK", 200, "20*30*, 60*40, 30*40", "01-11-2022");
+            buildingObj.showData();
+            Console.WriteLine();
+            Console.WriteLine();
+            Q3();
+
+        }
+        }
+    public class Building
+    {
+
+
+        String type;
+        String capacity;
+        int flatNo;
+        String dimension;
+        String dateOfCompletion;
+
+        public Building(String type, String capacity, int flatNo, String dimension, String dateOfCompletion)
+        {
+            this.type = type;
+            this.capacity = capacity;
+            this.flatNo = flatNo;
+            this.dimension = dimension;
+            this.dateOfCompletion = dateOfCompletion;
+        }
+
+        
+
+        public void showData()
+        {
+            Console.WriteLine("Type: " + type);
+            Console.WriteLine("Capacity: " + capacity);
+            Console.WriteLine("Flat Number: " + flatNo);
+            Console.WriteLine("Flat Dimensions: " + dimension);
+            Console.WriteLine("DateOfCompletion: " + dateOfCompletion);
+            
+        }
+
+    }
+}
