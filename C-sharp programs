@@ -1,0 +1,385 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace C_sharp_Program
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+        
+            //Ques-1 :
+            //Console.WriteLine("Welcome to world of C#");
+
+
+
+            /*Ques-2 :
+            string userName = Console.ReadLine();
+            Console.WriteLine("Hi ! " + userName);
+            Console.WriteLine("Welcome to world of C#");
+            */
+
+
+
+            /*Ques-3 :
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            for (int i = a+1; i < b; i++)
+            {
+                Console.WriteLine(i);
+            }
+            */
+
+
+
+            /*Ques-4:
+            int a = Convert.ToInt32(Console.ReadLine());
+            if (a%2 == 0)
+            {
+                Console.WriteLine("Number is Even");
+            }
+            else
+            {
+                Console.WriteLine("Number is Odd");
+            }
+            */
+
+
+
+
+            /*Ques-5 :
+            int size;
+            int oddSum = 0 ,evenSum = 0 ;
+
+            Console.WriteLine("Enter the size of array :");
+            size = Convert.ToInt32(Console.ReadLine());
+            int[] arr =new int[size];
+
+            Console.WriteLine("Enter the array values:");
+            for (int i = 0; i < size; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            for(int i = 0; i < size; i++)
+            {
+                if(arr[i]%2 == 0)
+                {
+                    evenSum += 1;
+                }
+                else
+                {
+                    oddSum+=1;
+                }
+            }
+            Console.WriteLine("Total Number of even is : " + evenSum);
+            Console.WriteLine("Total Number of odd is : " + oddSum);
+            */
+
+
+
+
+            /*Ques-6 :
+            double celsius;
+            double fahrenheit = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter temprature in fahrenheit");
+            celsius = (fahrenheit - 32) * 5 / 9;
+            Console.WriteLine("celsius : " + celsius);
+            */
+
+
+
+
+            /*Ques-8 :
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("0");
+            for (int i = 1; i <= a; i++)
+            {
+                Console.Write(",");
+                Console.Write(i*i);
+            }
+            Console.WriteLine();
+            */
+
+
+
+
+
+            /*Ques-9 :
+            int i, fact = 1, number;
+            Console.Write("Enter any Number: ");
+            number = int.Parse(Console.ReadLine());
+            for (i = 1; i <= number; i++)
+            {
+                fact = fact * i;
+            }
+            Console.Write("Factorial of " + number + " is: " + fact);
+            Console.WriteLine();
+            */
+
+
+
+
+
+            /*Ques-10 :
+            int a=0,b=1,c;
+            Console.WriteLine("0");
+            for(int i = 2; i < 40; i++)
+            {
+                c=a+b;
+                if(c>40)
+                {
+                    break;
+                }
+                Console.WriteLine(c+" ");
+                a = b;
+                b = c;
+                */
+
+
+
+
+
+            /*Ques-11 :
+            Console.WriteLine("Input the number");
+            int n=Convert.ToInt32(Console.ReadLine());
+            for(int i = 1; i <= 20; i++)
+            {
+                int m = i * n;
+                Console.WriteLine(n+" X "+i+" = "+m);            
+
+            }
+            */
+
+
+
+
+
+            /*Ques-12 :
+            for (int i = 200; i < 300; i++)
+            {
+                if(i%7==0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            */
+
+
+
+
+
+
+            /*Ques-13 :
+           int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            int c = int.Parse(Console.ReadLine());
+            if (a > b)
+            {
+                if(a> c)
+                {
+                    Console.WriteLine("Largest number is " + a);
+                }
+                else
+                {
+                    Console.WriteLine("Largest number is " + c);
+                }
+            }
+            else
+            {
+                if (b > c)
+                {
+                    Console.WriteLine("Largest number is " + b);
+                }
+                else
+                {
+                    Console.WriteLine("Largest number is " + c);
+                }
+            }
+            */
+
+
+
+
+
+
+            /*Ques-14 :
+            int[] arr = new int[5];
+
+            Console.WriteLine("Enter the array values:");
+            for (int i = 0; i < 5; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            for(int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i - 1] > arr[i])
+                {
+                   int temp=arr[i-1];
+                    arr[i-1] = arr[i];
+                    arr[i] = temp;
+                }
+               
+            }
+            Console.WriteLine("Lowest number is " + arr[0]);
+            */
+
+
+
+
+
+
+
+            /*Ques-15(a,b,c,d) :
+            int[] arr = new int[10];
+            
+
+            Console.WriteLine("Enter the array values:");
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int sum = arr[0];
+
+            for (int i = 0; i < 9; i++)
+            {
+                sum+=arr[i + 1];
+                if (arr[i] > arr[i+1])
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
+
+            }
+            int max=arr[9];
+
+            for (int i = 0; i < 9; i++)
+            {
+                sum += arr[i + 1];
+                if (arr[i] < arr[i + 1])
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+
+            }
+            int min = arr[9];
+
+            Console.WriteLine("Sum of the marks is : "+ sum);
+            double avg = sum / 10.0;
+            Console.WriteLine("Average of the marks is : "+ avg);
+            Console.WriteLine("Maximum marks is : " + max);
+            Console.WriteLine("Minimum marks is : " + min);
+            Console.WriteLine("Order in ");
+
+            for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            */
+
+
+
+
+
+            /*Ques- 15(e & f) :
+            int[] arr = new int[10];
+
+
+            Console.WriteLine("Enter the array values:");
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Array.Sort(arr);
+            Console.WriteLine("Marks in ascending order :");
+            for(int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+
+            Console.WriteLine("Marks in decending order :");
+            for (int i = arr.Length-1;i>=0; i--)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            */
+            
+            
+            
+
+
+            /*Ques-16 :
+            string str;
+            int l = 0;
+            str = Console.ReadLine();
+            foreach(char c in str)
+            {
+                l += 1;
+            }
+            Console.WriteLine("Length of the string is :"+l);
+            */
+
+
+
+
+
+
+            */Ques-17 :
+            string str= Console.ReadLine();
+            string a = "";
+            for (int i = str.Length-1; i >= 0; i--)
+            {
+                a=a+str[i];
+            }
+            Console.WriteLine(a);
+            */
+
+
+
+
+
+
+            /*Ques -18 :
+            string str = Console.ReadLine();
+            string sto = Console.ReadLine();
+            if (str != sto)
+            {
+                Console.WriteLine("Names are not same");
+            }
+            else
+            {
+                Console.WriteLine("Names are same");
+            }
+            */
+
+
+
+
+
+
+            /*Ques -19 :
+            string str = Console.ReadLine();
+            char[] chars = str.ToCharArray();
+            Array.Reverse(chars);
+            string rev = new string(chars);
+            bool b = str.Equals(rev, StringComparison.OrdinalIgnoreCase);
+            if (b==true)
+            {
+                Console.WriteLine(str + " is Palindrom ");
+            }
+            else
+            {
+                Console.WriteLine(str + " is not Palindrom ");
+            }
+            */
+        }
+        
+    }
+}
