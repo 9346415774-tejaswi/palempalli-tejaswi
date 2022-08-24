@@ -1,0 +1,179 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassesAndObject_Assignment
+{
+
+    internal class Program
+    {
+
+        static int n, m;
+        static string b, c;
+        static long a1;
+        static long accountno;
+        static string customer_name, account_type, transaction_type;
+        static void show_data(long a, string CN, string Atype)
+        {
+            accountno = a;
+            customer_name = CN;
+            account_type = Atype;
+            Console.WriteLine("Account number= " + accountno);
+            Console.WriteLine("Customer Name= " + customer_name);
+            Console.WriteLine("Account type= " + Atype);
+        }
+        public void credit(int amount)
+        {
+            Console.Write("Enter the balance:");
+            int balance = Convert.ToInt32(Console.ReadLine());
+            if (balance >= 0 && amount >= 0)
+            {
+                balance = balance + amount;
+                Console.WriteLine("Balance after deposit: " + balance);
+            }
+            else if (balance < 0 && amount >= balance)
+            {
+                balance = balance + amount;
+                Console.WriteLine("Balance after deposit: " + balance);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Amount");
+            }
+            Console.ReadLine();
+        }
+        public void debit(int amount)
+        {
+            int balance = Convert.ToInt32(Console.ReadLine());
+            if (balance >= 0 && amount < balance)
+            {
+                balance = balance - amount;
+                Console.WriteLine(" Balance after withdrawl : " + balance);
+            }
+            else if (balance >= 0 && amount > balance)
+            {
+
+                Console.WriteLine("Cannot Withdraw");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Amount");
+            }
+            Console.ReadLine();
+        }
+       
+        static void Main(string[] args)
+        {
+            double payment, debt;
+            int month;
+            Console.WriteLine("Please enter the monthly payment");
+            payment = Convert.ToDouble(Console.ReadLine());
+            month = 0;
+            debt = 1000;
+            Console.WriteLine("Month:" + month + "Balance:$" + debt + " Total payed:$" + "0.000");
+
+            while (debt > payment)
+            {
+                debt = debt * 1.015;
+                debt = debt - payment;
+                Console.WriteLine("Month: " + (month = month + 1) + "   Balance: $" + debt + " Total payed: $" + (payment * month));
+            }
+            Console.WriteLine("Month: " + (month = month + 1) + "   Balance: $0.0" + " Total payed: $" + (payment * month - debt));
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            //Question 2
+
+            Console.Write("Enter the Account Number:");
+            a1 = Convert.ToInt64(Console.ReadLine());
+            Console.Write("Enter the Customer Name:");
+            b = Console.ReadLine();
+            Console.Write("Enter the Account Type:");
+            c = Console.ReadLine();
+            show_data(a1, b, c);
+            Console.Write("Enter the transaction type: ");
+            transaction_type = Console.ReadLine();
+            if (transaction_type == "deposit")
+            {
+                Program obj = new Program();
+                Console.Write("Enter the deposit amount :");
+                n = Convert.ToInt32(Console.ReadLine());
+                obj.credit(n);
+            }
+            else if (transaction_type == "withdraw")
+            {
+                Program obj1 = new Program();
+                Console.Write("Enter the withdrawl amount:");
+                m = Convert.ToInt32(Console.ReadLine());
+                obj1.debit(m);
+
+            }
+            else
+            {
+                Console.Write("Invalid");
+            }
+
+
+
+            //Question 3
+
+            double rl, phy, che, ca, mat, hin, total, cls, sem;
+            double avg;
+            string nm, div, branch;
+
+            Console.Write("\n\n");
+            Console.Write("Calculate the total, average and division to take marks of five subjects:\n");
+            Console.Write("-------------------------------------------------------------------------------");
+            Console.Write("\n\n");
+
+
+            Console.Write("Input the Roll Number of the student :");
+            rl = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input the Name of the Student :");
+            nm = Console.ReadLine();
+
+            Console.Write("Input the class  of the student :");
+            cls = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input the Semester of the student :");
+            sem = Convert.ToInt32(Console.ReadLine());
+
+            //Console.Write("Input the Name of the Student :");
+            // nm = Console.ReadLine();
+
+            Console.Write("Input the Branch of the Student :");
+            branch = Console.ReadLine();
+
+            Console.Write("Input  the marks of Physics : ");
+            phy = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input  the marks of  Chemistry : ");
+            che = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input  the marks of Computer Application : ");
+            ca = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input  the marks of Mathematics : ");
+            mat = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Input  the marks of Hindi : ");
+            hin = Convert.ToInt32(Console.ReadLine());
+
+            total = phy + che + ca + mat + hin;
+            avg = total / 5;
+            if (phy < 35 || che < 35 || ca < 35 || mat < 35 || hin < 35)
+                div = "Failed";
+
+            else
+                if (avg < 50 && phy > 35 && che > 35 && ca > 35 && mat > 35 && hin > 35)
+                div = "Failed";
+            else
+                div = "Pass";
+
+            Console.Write("\nRoll no of Student : {0}\nName of Student : {1}\nclass  of the studentn : {2}\nSemester  of the studentn : {3}\nBranch  of the student : {4}\n", rl, nm, cls, sem, branch);
+            Console.Write("Marks in Physics : {0}\nMarks in Chemistry : {1}\nMarks in Computer Application : {2}\nMarks in Mathematics : {3}\nMarks in Hindi : {4}\n", phy, che, ca, mat, hin);
+            Console.Write("Total Marks = {0}\nAverage = {1}\nDivision = {2}\n", total, avg, div);
+            Console.ReadLine();
+        }
+    }
+}
