@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Properties_Assignment
+{
+    internal class Program
+    {
+        struct book
+        {
+            public string title;
+            public string isbn;
+            public string autor;
+            public string quantityofbook;
+            public string bookprice;
+        }
+        public class strucExer9
+        {
+            static void Main(string[] args)
+            {
+                int nobook = 1000;
+                book[] books = new book[nobook];
+                int i, j, n = 1, k = 1;
+                Console.WriteLine("\n\ninsert the information of book:\n");
+
+                for (j = 0; j <= n; j++)
+                {
+                    Console.WriteLine("information of book{0}:", k);
+                    Console.WriteLine("input name of the book:");
+                    books[j].title = Console.ReadLine();
+                    Console.WriteLine("input the isbn");
+                    books[j].isbn = Console.ReadLine();
+                    Console.WriteLine("input the autor");
+                    books[j].autor = Console.ReadLine();
+                    Console.WriteLine("input the quantityofbook");
+                    books[j].quantityofbook = Console.ReadLine();
+                    Console.WriteLine("input the bookprice");
+                    books[j].bookprice = Console.ReadLine();
+                    k++;
+                    Console.WriteLine();
+                }
+                for (i = 0; i <= n; i++)
+                {
+                    Console.WriteLine("{0}: title={1}, isbn={2}, autor={3}, quantityofbook={4}, bookprice={5}", i + 1, books[i].title, books[i].isbn, books[i].autor, books[i].quantityofbook, books[i].bookprice);
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
