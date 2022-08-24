@@ -1,0 +1,315 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface1
+{
+
+    public class TCS : GovtRules
+    {
+        public int EmpId { get; set; }
+        public string Name { get; set; }
+        public string Dept { get; set; }
+        public string Desig { get; set; }
+
+        public int BasicSalary { get; set; }
+
+        public TCS(int empId, string name, string dept, string desig, int basicSalary)
+        {
+            EmpId = empId;
+            Name = name;
+            Dept = dept;
+            Desig = desig;
+            BasicSalary = basicSalary;
+        }
+
+        public double EmployeePF(double basicSalary)
+        {
+            double pf = (0.12 * basicSalary) + ((8.33 / 100) * basicSalary) + ((3.67 / 100) * basicSalary);
+            return pf;
+        }
+
+        public string LeaVeDetails()
+        {
+            string g = "Casusl Leave per month: 1day \n Sick Leave per year: 12days\nPrevilage Leave per year:10days";
+            return g;
+        }
+
+        public double gratuityAmount(float serviceCompleted, double basicSalary)
+        {
+            if (serviceCompleted > 5 && serviceCompleted <= 10)
+            {
+                return basicSalary;
+            }
+            else if (serviceCompleted > 10 && serviceCompleted <= 20)
+            {
+                return 2 * basicSalary;
+            }
+            else if (serviceCompleted < 5)
+            {
+                return 0 * basicSalary;
+            }
+            else
+            {
+                return 3 * basicSalary;
+            }
+        }
+
+
+    }
+
+    //*****************************************************************8
+    public class Accenture : GovtRules
+    {
+        public int EmpId { get; set; }
+        public string Name { get; set; }
+        public string Dept { get; set; }
+        public string Desig { get; set; }
+
+        public int BasicSalary { get; set; }
+
+        public Accenture(int empId, string name, string dept, string desig, int basicSalary)
+        {
+            EmpId = empId;
+            Name = name;
+            Dept = dept;
+            Desig = desig;
+            BasicSalary = basicSalary;
+        }
+
+        public double EmployeePF(double basicSalary)
+        {
+            double pf = (0.12 * basicSalary) + (0.12 * basicSalary);
+            return pf;
+        }
+        public string LeaVeDetails()
+        {
+            string g = "Casusl Leave per month: 2day \n Sick Leave per year: 5days  \nPrevilage Leave per year:5days";
+            return g;
+        }
+
+        public double gratuityAmount(float serviceCompleted, double basicSalary)
+        {
+            return 0;
+        }
+    }
+
+    //*********************************************************8
+    interface GovtRules
+    {
+        double EmployeePF(double basicSalary);
+        string LeaVeDetails();
+        double gratuityAmount(float serviceCompleted, double basicSalary);
+    }
+    internal class Program
+    {
+        //************************************************************
+
+        public interface IGovtRules
+        {
+            double EmployeePF(double basicsalary);
+
+            string leavedetails(string leave);
+            double gratuityamount(float servicecompleted, double basicsalary);
+
+
+
+
+        }
+        class Tcs : IGovtRules
+        {
+            public Tcs()
+            {
+                id = 20;
+                empname = "Pratyush";
+                empdept = "Delivery";
+
+                empdesg = "Associate Engineer";
+
+
+            }
+            public Tcs(int id, string empname, string empdept, string empdesg)
+            {
+                this.id = id;
+                this.empname = empname;
+                this.empdept = empdept;
+
+                this.empdesg = empdesg;
+
+            }
+
+            private int id;
+            public void Setempid(int i)
+            {
+                id = i;
+            }
+            public int Getempid()
+            {
+                return id;
+            }
+            private string empname;
+            public void Setname(string i)
+            {
+                empname = i;
+            }
+            public string Getname()
+            {
+                return empname;
+            }
+            private string empdept;
+            public void Setdept(string i)
+            {
+                empdept = i;
+            }
+            public string Getdept()
+            {
+                return empdept;
+            }
+            private string empdesg;
+            public void Setdesg(string i)
+            {
+                empdesg = i;
+            }
+            public string Getdesg()
+            {
+                return empdesg;
+            }
+
+
+            public double EmployeePF(double basicsalary)
+            {
+                basicsalary = 30000;
+                double PF = (0.12) * (basicsalary);
+                double PFEC;
+                PFEC = (0.0833) * (basicsalary);
+                double pensionfund;
+                pensionfund = (0.0367) * (basicsalary);
+                Console.WriteLine("basicsalary is {0},PF amount is {1},PF as employer contribution amount is " +
+                     "{2},pension fund is {3} ", basicsalary, PF, PFEC, pensionfund);
+                return PFEC;
+            }
+            public string leavedetails(string totalleave)
+            {
+                int casualleave = 1;
+                int sickleave = 12;
+                int privilegeleave = 10;
+
+                Console.WriteLine("casual leaves per month is {0},sickleaves per year are {1},privilegeleaves per year are {2}", casualleave, sickleave, privilegeleave);
+                return totalleave;
+
+
+            }
+            public double gratuityamount(float servicecompleted, double basicsalary)
+            {
+                basicsalary = 30000;
+                if (servicecompleted > 5)
+                {
+                    Console.WriteLine("one month salary will be deposited");
+                }
+                else if (servicecompleted > 10)
+                    Console.WriteLine("gratuity amount is {0}", 2 * basicsalary);
+                else if (servicecompleted > 20)
+                    Console.WriteLine("gratuity amount is {1}", 3 * basicsalary);
+                else if (servicecompleted < 5)
+                    Console.WriteLine("no gratuity amount");
+
+
+
+
+
+
+
+                return basicsalary;
+            }
+
+
+
+        }
+        class Accenture : Tcs
+        {
+            public new double EmployeePF(double basicsalary)
+            {
+                basicsalary = 30000;
+                double PF = (0.12) * (basicsalary);
+                double EC;
+                EC = Convert.ToDouble(Console.ReadLine());
+
+                double PFEC;
+                PFEC = 12 % (EC);
+                double pensionfund;
+                pensionfund = 3.67 % (basicsalary);
+                Console.WriteLine("basicsalary is {0},PF amount is {1},PF as employer contribution amount is " +
+                     "{2},pension fund is {3}", basicsalary, PF, PFEC, pensionfund);
+                return PFEC;
+            }
+            public new string leavedetails(string leave)
+
+            {
+                int casualleave = 2;
+                int sickleave = 5;
+                int privilegeleave = 5;
+
+                Console.WriteLine("casual leaves per month is {0},sickleaves per year are {1},privilegeleaves per year are {2}", casualleave, sickleave, privilegeleave);
+                return leave;
+
+
+            }
+            public new double gratuityamount(float servicecompleted, double basicsalary)
+            {
+                Console.WriteLine("gratuity amount not applicable");
+
+
+
+
+
+
+
+                return servicecompleted;
+            }
+
+        }
+
+
+
+
+        static void Main(string[] args)
+        {
+            TCS t = new TCS(12, "PAWAN", "DELIVERY", "ASSOCIATE", 2000);
+            string r = t.LeaVeDetails();
+            Console.WriteLine(r);
+
+            double v = t.gratuityAmount(20f, 2000);
+            Console.WriteLine(v);
+            //************************************************************
+
+            Tcs obj = new Tcs();
+            int var = obj.Getempid();
+            Console.WriteLine(var);
+            string var1 = obj.Getname();
+            Console.WriteLine(var1);
+            string var2 = obj.Getdept();
+            Console.WriteLine(var2);
+            string var3 = obj.Getdesg();
+            Console.WriteLine(var3);
+            Accenture obj1 = new Accenture();
+            int var4 = obj1.Getempid();
+            Console.WriteLine(var4);
+            string var5 = obj1.Getname();
+            Console.WriteLine(var5);
+            string var6 = obj.Getdept();
+            Console.WriteLine(var6);
+            string var7 = obj.Getdesg();
+            Console.WriteLine(var7);
+            obj.EmployeePF(30000);
+            obj.leavedetails(Convert.ToString(23));
+            obj.gratuityamount(10, 30000);
+            obj1.EmployeePF(32000);
+            obj1.leavedetails(Convert.ToString(12));
+            obj1.gratuityamount(0, 32000);
+            Console.ReadLine();
+
+        }
+    }
+    }
