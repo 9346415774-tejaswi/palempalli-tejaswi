@@ -1,0 +1,230 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassesAndObject_Assignment
+{
+    public class Program1
+    {
+
+    }
+    public class Program2
+    {
+        static int n, m, dd;
+        static string A, cc;
+        static long B;
+        static String NameoftheDepositor;
+        static long AccountNumber;
+        static string Typeofaccount;
+        static int Balanceamount_in_the_account;
+
+        void initialvalues(string name, long AccNo, string type, int balance)
+        {
+            NameoftheDepositor = name;
+            Console.WriteLine("Name of the depositor is" + NameoftheDepositor);
+
+            AccountNumber = AccNo;
+            Console.WriteLine(" AccountNumber = {0}", AccNo);
+            Typeofaccount = type;
+            Console.WriteLine("Typeofaccount= {0}", type);
+            Balanceamount_in_the_account = balance;
+            Console.WriteLine("Balanceamount_in_the_account= {0}", balance);
+            
+
+        }
+        public void deposit(int amount)
+        {
+            if (amount > 0)
+            {
+                Balanceamount_in_the_account = Balanceamount_in_the_account + amount;
+                Console.WriteLine("Balance after depositing = " + Balanceamount_in_the_account);
+            }
+            else
+            {
+                Console.WriteLine("Cannot deposit negative balance");
+            }
+            
+        }
+        public void withdraw(int withdrawn_Amount)
+        {
+            if (Balanceamount_in_the_account <= 0 || withdrawn_Amount < 0)
+            {
+                Console.WriteLine("Invalid amount");
+            }
+            else
+            {
+                Balanceamount_in_the_account = Balanceamount_in_the_account - withdrawn_Amount;
+                Console.WriteLine("Balance after withdrawl= " + Balanceamount_in_the_account);
+            }
+            
+
+        }
+    }
+    internal class Program
+    {
+        static string a, b, c;
+        static int d;
+        int sum = 0;
+        static string bookname, booktitle, bookauthor;
+        static int quantityofbooks;
+
+        static double x, y, D, e;
+        static int C;
+        public static void Area(double l, double b)
+        {
+            Console.WriteLine("Area of rectangle = " + (l * b));
+        }
+        public static void Area(int basee, double height)
+        {
+            Console.WriteLine("Area of triangle = " + ((0.5) * basee * height));
+        }
+        public static void Area(double radius)
+        {
+            Console.WriteLine("Area of circle = " + (3.14 * radius * radius));
+            Console.WriteLine("Area of square = " + (radius * radius));
+        }
+        Program(string Bname, string Btitle, string Bauthor, int isbn)
+        {
+
+            bookname = Bname;
+            booktitle = Btitle;
+            bookauthor = Bauthor;
+            Console.WriteLine("Book name = " + bookname);
+            Console.WriteLine("Book Title =" + booktitle);
+            Console.WriteLine("Book Author= " + bookauthor);
+            Console.WriteLine("ISBN = " + isbn);
+        }
+        void display()
+        {
+            Console.Write("Enter the quantity of books ");
+            quantityofbooks = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the price of books ");
+
+            int[] books = new int[quantityofbooks];
+            for (int i = 0; i < quantityofbooks; i++)
+            {
+                books[i] = Convert.ToInt32(Console.ReadLine());
+                sum = sum + books[i];
+            }
+
+        }
+
+        static double percentage;
+        static int RollNo;
+        static string StudName;
+        static double MarksInEng;
+        static double MarksInMaths;
+        static double MarksInScience;
+        void TotalMrksandper()
+        {
+            double TotalMarks = MarksInEng + MarksInMaths + MarksInScience;
+            percentage = (TotalMarks * 100) / 500;
+            Console.WriteLine("Total Marks= {0} ", TotalMarks);
+            Console.WriteLine("Percentage= " + percentage);
+        }
+
+        static int n, m, dd;
+        static string A, cc;
+        static long B;
+        static String NameoftheDepositor;
+        static long AccountNumber;
+        static string Typeofaccount;
+        static int Balanceamount_in_the_account;
+
+        void initialvalues(string name, long AccNo, string type, int balance)
+        {
+            NameoftheDepositor = name;
+            Console.WriteLine("Name of the depositor is" + NameoftheDepositor);
+
+            AccountNumber = AccNo;
+            Console.WriteLine(" AccountNumber = {0}", AccNo);
+            Typeofaccount = type;
+            Console.WriteLine("Typeofaccount= {0}", type);
+            Balanceamount_in_the_account = balance;
+            Console.WriteLine("Balanceamount_in_the_account= {0}", balance);
+            Console.ReadLine();
+
+        }
+       
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the Book name ");
+            a = Console.ReadLine();
+            Console.Write("Enter the Book Title: ");
+            b = Console.ReadLine();
+            Console.Write("Enter the Book Author: ");
+            c = Console.ReadLine();
+            Console.Write("Enter the ISBN number: ");
+            d = Convert.ToInt32(Console.ReadLine());
+            Program obj = new Program(a, b, c, d);
+            obj.display();
+            Console.Write("Total bill of the books = " + obj.sum);
+            Console.WriteLine();
+
+            //Question 6
+
+            Console.Write("Enter the length:");
+            x = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter the breadth:");
+            y = Convert.ToDouble(Console.ReadLine());
+            Area(x, y);
+            Console.Write("Enter the base:");
+            C = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the Height:");
+            D = Convert.ToDouble(Console.ReadLine());
+
+            Area(C, D);
+            Console.Write("Enter the radius or side:");
+            e = Convert.ToDouble(Console.ReadLine());
+            Area(e);
+            Console.WriteLine();
+
+            //Question 7
+
+            Program2 objj = new Program2();
+            Console.Write("Enter the name of depositor: ");
+            A = Console.ReadLine();
+            Console.Write("Enter the account number: ");
+            B = Convert.ToInt64(Console.ReadLine());
+            Console.Write("Enter the type of account: ");
+            cc = Console.ReadLine();
+            Console.Write("Enter the balance: ");
+            dd = Convert.ToInt32(Console.ReadLine());
+            obj.initialvalues(A, B, cc, dd);
+            Program2 obj1 = new Program2();
+            Console.Write("Enter the value of deposit amount");
+            n = Convert.ToInt32(Console.ReadLine());
+            obj1.deposit(n);
+            Console.WriteLine("Enter the value of withdrawn amount");
+            m = Convert.ToInt32(Console.ReadLine());
+            Program2 obj2 = new Program2();
+            obj2.withdraw(m);
+            
+
+
+            //Question 8
+            Console.Write("Enter student RollNo: ");
+            RollNo = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter student Name: ");
+            StudName = Console.ReadLine();
+            Console.Write("Enter student MarksInEnglish: ");
+            MarksInEng = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter student MarksInMaths: ");
+            MarksInMaths = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter student MarksInScience: ");
+            MarksInScience = Convert.ToDouble(Console.ReadLine());
+            Program1 obje = new Program1();
+            obj.TotalMrksandper();
+            Console.ReadLine();
+
+        }
+
+
+    }
+
+
+
+
+}
