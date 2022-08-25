@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Parameters_Assignment
+{
+    internal class Program
+    {
+        //Question 1
+
+        public static void Q1()
+        {
+            double payment, debt;
+            int month;
+            Console.WriteLine("Please enter the monthly payment");
+            payment = Convert.ToDouble(Console.ReadLine());
+            month = 0;
+            debt = 1000;
+            Console.WriteLine("Month:" + month + "Balance:$" + debt + "Total payed:$" + "0.000");
+
+            while (debt > payment)
+            {
+                debt = debt * 1.015;
+                debt = debt - payment;
+                Console.WriteLine("Month: " + (month = month + 1) + "   Balance: $" + debt + "Total payed: $" + (payment * month));
+            }
+            Console.WriteLine("Month: " + (month = month + 1) + "   Balance: $0.0" + "Total payed: $" + (payment * month - debt));
+            
+        }
+
+        // Question 2
+
+        public static void Q2()
+        {
+            string sentence = "DotNet is technology and DotNet is interoperable and DotNet is simple";
+            string[] words = sentence.Split(new char[] { ' ', ',', '.', '!', ':', '?', ';' }, StringSplitOptions.RemoveEmptyEntries); // this splits the string into the words
+            var groups = words.GroupBy(x => x); // this groups the words
+            foreach (var group in groups)
+            {
+                Console.WriteLine("{0} - {1}", group.Key, group.Count());
+                Console.ReadKey();
+            }
+        }
+
+        //Question 3
+
+        public static int Q3(int num1, int num2)
+        {
+            int total;
+            total = num1 + num2;
+            return total;
+        }
+        static void Main(string[] args)
+        {
+
+            Q1();
+            Q2();
+            Console.Write("\n\nFunction to calculate the sum of two numbers :\n");
+            Console.Write("--------------------------------------------------\n");
+            Console.Write("Enter a number: ");
+            int n1 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter another number: ");
+            int n2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nThe sum of two numbers is : {0} \n", Q3(n1, n2));
+            
+        }
+    }
+}
