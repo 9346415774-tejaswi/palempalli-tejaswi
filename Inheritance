@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Inheritance_assingnment
+{
+    
+        public class Furniture
+        {
+            int orderId;
+            string Date;
+            string FurnitureType;
+            int Qnty;
+            double amt;
+            string paymode;
+            public void setdata()
+            {
+                orderId = 233;
+                Date = "05/11/2000";
+                FurnitureType = "Chair";
+                Qnty = 2;
+                amt = 100;
+                paymode = "debit";
+
+            }
+            public void getdata()
+            {
+                Console.WriteLine("Order id:{0}\nDate:{1}\nFurniture type:{2}\nQuantity:{3}\nTotal Amount:{4}\nPayment mode:{5}", orderId, Date, FurnitureType, Qnty, amt, paymode);
+            }
+        }
+        public class Chair : Furniture
+        {
+            string chairtype, purpose;
+            double rate;
+
+
+            public void setchairdata()
+            {
+                setdata();
+                chairtype = "steel";
+                purpose = "To sit";
+                rate = 100;
+
+            }
+            public void getchairdata()
+            {
+                getdata();
+                Console.WriteLine("Chair type:{0}\nPurpose:{1}\nRate:{2}", chairtype, purpose, rate);
+                if (chairtype == "wood")
+                    Console.WriteLine("Wood Type would be Teak Wood/Rose Wood\n");
+                else if (chairtype == "steel")
+                    Console.WriteLine("It would be Gray Steel/Green Steel/Brown Steel\n");
+                else if (chairtype == "plastic")
+                    Console.WriteLine("Plastic Color would be Green/Red/Blue/White\n");
+            }
+
+        }
+        public class Cot : Furniture
+        {
+            string cottype, capacity;
+            double rate;
+
+            public void setcotdata()
+            {
+                setdata();
+                cottype = "wood";
+                capacity = "Single";
+                rate = 100;
+
+            }
+            public void getcotdata()
+            {
+                getdata();
+                Console.WriteLine("Cot type:{0}\nCapacity:{1}\nRate:{2}", cottype, capacity, rate);
+                if (cottype == "wood")
+                    Console.WriteLine("Wood Type would be Teak Wood/Rose Wood");
+                else if (cottype == "steel")
+                    Console.WriteLine("It would be Gray Steel/Green Steel/Brown Steel");
+            }
+        }
+        internal class Program
+        { 
+            static void Main(string[] args)
+        {
+            Chair obj = new Chair();
+            obj.setchairdata();
+            obj.getchairdata();
+
+            Cot obj2 = new Cot();
+            obj2.setcotdata();
+            obj2.getcotdata();
+            Console.ReadLine();
+        }
+    }
+}
