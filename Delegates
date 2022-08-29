@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates
+{
+    class Delegates
+    {
+        public delegate void num();
+        public void divisibleBy3()
+        {
+            int[] arr = new int[] { 23, 54, 64, 2332, 67, 34, 65, 76, 34, 4, 10, 9, 12 };
+            int n = 3;
+            int length = arr.Length;
+            Console.WriteLine("Delegates Method");
+            //Delegates
+            Console.WriteLine("List of Number Divisible by 3 in the given list: ");
+            for (int i = 0; i < length; i++)
+            {
+                if (arr[i] % n == 0)
+                {
+                    Console.WriteLine(arr[i]);
+                }
+            }
+        }
+        public void lambdaExpression()
+        {
+            List<int> numbers = new List<int>() { 36, 71, 12, 15, 29, 18, 27, 17, 9, 34 };
+            List<int> divBy3 = numbers.FindAll(x => (x % 3) == 0);
+            Console.WriteLine("Lambda Expression Method");
+            Console.WriteLine("Numbers Divisible by 3 : ");
+            foreach (var value in divBy3)
+            {
+                Console.WriteLine(value);
+            }
+        }
+        public static void Main()
+        {
+            Delegates del = new Delegates();
+            num del_obj = new num(del.divisibleBy3);
+            del_obj();
+            del.lambdaExpression();
+        }
+    }
+}
