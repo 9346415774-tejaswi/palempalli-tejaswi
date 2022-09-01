@@ -1,0 +1,364 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LinQ_Assignment
+{
+    internal class Program
+    {
+        //  Question - 1
+
+       public void sol1()
+        {
+            int[] numb = { 101, 201, 301, 401, 501 };
+
+            var result = from f in numb
+                         where f > 100 && f < 1000
+                         let k = f * f * f
+                         select k;
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+        //  Question - 2
+
+        public class Tennis
+        {
+            public string Name { get; set; }
+            public string Country { get; set; }
+
+            public Tennis(string name, string country)
+            {
+                Name = name;
+                Country = country;
+            }
+        }
+
+        public class TennisDivide
+        {
+            public string Name1 { get; set; }
+            public string Name2 { get; set; }
+            public TennisDivide(string name1, string name2)
+            {
+                Name1 = name1;
+                Name2 = name2;
+
+            }
+        }
+        internal class Q2
+        {
+            public static void sol2()
+            {
+                List<Tennis> tenn = new List<Tennis>()
+            {
+                new Tennis("Blessy","India"),
+                new Tennis("Zian","Germany"),
+                new Tennis("Meenan","Canada"),
+                new Tennis("Dan","India"),
+                new Tennis("Mia","Germany"),
+                new Tennis("NANI","Canada"),
+
+
+
+
+
+
+
+            };
+
+                List<Tennis> t1 = new List<Tennis>();
+                List<Tennis> t2 = new List<Tennis>();
+
+                for (int i = 0; i < tenn.Count; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        t1.Add(tenn[i]);
+                    }
+                    else
+                    {
+                        t2.Add(tenn[i]);
+                    }
+
+                }
+
+                var result = from Tennis f1 in t1
+                             from Tennis f2 in t2
+                             where f1.Country != f2.Country
+                             select new TennisDivide(f1.Name, f2.Name);
+                foreach (TennisDivide s in result)
+                {
+                    Console.WriteLine(s.Name1 + ":" + s.Name2);
+                }
+
+
+
+            }
+        }
+        // Question - 3
+
+        public class Order
+        {
+            public int OrderId { get; set; }
+            public string ItemName { get; set; }
+            public DateTime OrderDate { get; set; }
+
+            public int Quantity { get; set; }
+
+            public Order(int orderId, string itemName, DateTime orderDate, int quantity)
+            {
+                OrderId = orderId;
+                ItemName = itemName;
+                OrderDate = orderDate;
+                Quantity = quantity;
+            }
+        }
+        internal class Q3
+        {
+
+            public static void sol3()
+            {
+                List<Order> o = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2022,1,1),2),
+              new Order(223,"AFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,3,1),4),
+              new Order(423,"CFGS",new DateTime(2022,4,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+
+                var result = from Order item in o
+                             orderby item.OrderDate descending, item.Quantity descending
+                             select item;
+                foreach (Order it in result)
+                {
+                    Console.WriteLine(it.OrderId + " " + it.ItemName + " " + it.OrderDate.ToShortDateString() + " " + it.Quantity);
+                }
+
+            }
+
+        }
+
+        // Question - 4 
+
+        internal class Q4
+        {
+            public static void sol4()
+            {
+                List<Order> m = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2022,1,1),2),
+              new Order(223,"AFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,1,1),4),
+              new Order(423,"CFGS",new DateTime(2022,2,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+
+                var result = from Order item in m
+                             orderby item.OrderDate descending, item.Quantity descending
+                             group item by item.OrderDate.Month;
+                foreach (var it in result)
+                {
+                    Console.WriteLine(it.Key + ":");
+                    foreach (var order in it)
+                    {
+                        Console.WriteLine(order.OrderId + " " + order.ItemName + " " + order.OrderDate.Date + " " + order.Quantity);
+                    }
+                }
+            }
+        }
+
+        // Question - 5
+
+        public class Item
+        {
+
+            public string ItemName { get; set; }
+            public int Price { get; set; }
+            public Item(string itemName, int price)
+            {
+                ItemName = itemName;
+                Price = price;
+            }
+        }
+
+        public class Tog
+        {
+            public int OrderID { get; set; }
+            public string ItemName { get; set; }
+            public DateTime OrderDate { get; set; }
+            public double Price { get; set; }
+            public int Quantity { get; set; }
+
+            public Tog(string item, DateTime date, double price, int quant)
+            {
+
+                ItemName = item;
+                OrderDate = date;
+                Price = price;
+                Quantity = quant;
+
+            }
+        }
+        internal class Q5
+        {
+
+            public static void sol5()
+            {
+                List<Item> list = new List<Item>()
+            {
+                new Item("FFGS",23),
+                new Item("FRGS",23),
+                new Item("FPGS",23),
+                new Item("BFGS",23),
+                new Item("CFGS",23),
+
+            };
+                List<Order> o = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2022,1,1),2),
+              new Order(223,"AFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,3,1),4),
+              new Order(423,"CFGS",new DateTime(2022,4,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+                var result = from t in o
+                             join e in list on t.ItemName equals e.ItemName
+                             orderby t.OrderDate descending
+                             select new Tog(t.ItemName, t.OrderDate, e.Price, t.Quantity) into es
+                             group es by es.OrderDate;
+                foreach (var r in result)
+                {
+                    Console.WriteLine(r.Key);
+                    foreach (var e in r)
+                    {
+                        Console.WriteLine(e.ItemName + ":" + (e.Price * e.Quantity));
+                    }
+                }
+
+
+            }
+        }
+
+        // Question - 6
+
+        internal class Q6
+        {
+            public static void sol6()
+            {
+                List<Item> list = new List<Item>()
+            {
+                new Item("FFGS",23),
+                new Item("FRGS",23),
+                new Item("FPGS",23),
+                new Item("BFGS",23),
+                new Item("CFGS",23),
+
+            };
+                List<Order> o = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2022,1,1),2),
+              new Order(223,"AFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,3,1),4),
+              new Order(423,"CFGS",new DateTime(2022,4,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+                var result = from t in o
+                             join e in list on t.ItemName equals e.ItemName
+                             orderby t.OrderDate descending
+                             select new { NAME = t.ItemName, DateO = t.OrderDate, Price1 = e.Price, TOTQUANT = t.Quantity } into es
+                             group es by es.DateO;
+                foreach (var r in result)
+                {
+                    Console.WriteLine(r.Key);
+                    foreach (var e in r)
+                    {
+                        Console.WriteLine(e.NAME + ":" + (e.Price1 * e.TOTQUANT));
+                    }
+                }
+            }
+        }
+
+        // Question - 7
+
+        internal class Q7
+        {
+            public static void sol7()
+            {
+
+                List<Order> o = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2020,1,1),2),
+              new Order(223,"AFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,3,1),4),
+              new Order(423,"CFGS",new DateTime(2022,4,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+                var result = o.Any(r => r.Quantity > 0);
+                Console.WriteLine(result);
+                var res = o.OrderByDescending(s => s.Quantity).Select(st => st);
+                int k = 0;
+                foreach (var tem in res)
+                {
+                    if (k == 0)
+                    {
+                        Console.WriteLine(tem.OrderId + " " + tem.ItemName + " " + tem.Quantity);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    k++;
+                }
+                var re = o.Any(p => p.OrderDate.Year < 2022);
+                Console.WriteLine(re);
+
+
+
+            }
+        }
+
+        // Question - 9
+
+        internal class Q9
+        {
+            public static void sol9()
+            {
+                int[] num = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, };
+
+                List<Order> o = new List<Order>()
+            { new Order(123,"FFGS",new DateTime(2022,1,1),2),
+              new Order(223,"BFGS",new DateTime(2022,2,1),3),
+              new Order(323,"BFGS",new DateTime(2022,3,1),4),
+              new Order(423,"BFGS",new DateTime(2022,4,1),5),
+              new Order(523,"DFGS",new DateTime(2022,5,1),6)
+            };
+
+                var retr = (from j in num
+                            where j % 2 == 0
+                            select j).Count();
+                Console.WriteLine(retr);
+
+                var es = o.Sum(er => er.Quantity);
+                Console.WriteLine(es);
+
+                var bbbs = o.GroupBy(ee => ee.ItemName)
+                    .OrderByDescending(ee => ee.Count())
+                    .First().Key;
+                Console.WriteLine(bbbs);
+
+            }
+        }
+        static void Main(string[] args)
+        {
+            sol1();
+            sol2();
+            sol3();
+            sol4();
+            sol5();
+            sol6();
+            sol7();
+            sol9();
+        }
+    }
+}
