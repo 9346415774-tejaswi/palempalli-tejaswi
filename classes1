@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace class_Assignment1
+{
+    internal class Student1
+
+    {
+        static string roll, name, branch, sem;
+        static int cls;
+
+        public static void solution()
+        {
+            int b=0;
+            int[] m = new int[5];
+            roll = Console.ReadLine();
+            name = Console.ReadLine();
+            branch = Console.ReadLine();
+            sem = Console.ReadLine();
+            cls = int.Parse(Console.ReadLine());
+            for(int i = 0; i < m.Length; i++)
+            {
+                m[i] = int.Parse(Console.ReadLine());
+                b+= m[i];
+            }
+            int a = b / 5;
+            bool flag = false;
+            for(int i = 0; i < m.Length; i++)
+            {
+                if (m[i] < 35)
+                {
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                Console.WriteLine("failed");
+            }
+            else if (a < 50 && flag)
+            {
+                Console.WriteLine("failed");
+            }
+            else
+            {
+                Console.WriteLine("passed");
+            }
+        }
+        public static void display()
+        {
+            Console.WriteLine("Roll Number " + roll);
+            Console.WriteLine("Name " + name);
+            Console.WriteLine("Branch " + branch);
+            Console.WriteLine("Sem " + sem);
+            Console.WriteLine("class ",cls);
+        }
+
+    }
+}
+// 
+using System;
+namespace class_Assignment1
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            Student1.solution();
+            Student1.display();
+        }
+    }
+}
