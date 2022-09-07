@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+namespace Collection_using_nongeneric
+{
+   internal class Program
+    {
+        int s_id;
+        string s_name;
+        string s_branch;
+        
+         public static void Q()
+             {
+         ArrayList a = new ArrayList();
+             a.Add(2);
+             a.Add(29);  
+             a.Add(30);
+             a.Add(4);
+             a.Add(52);
+             a.Add(6);
+             a.Add(22);
+             a.Add(6);
+             a.Add(24);
+             a.Add(1);
+             foreach(int o in a)
+             {
+                 Console.WriteLine(o);
+             }
+             Console.WriteLine("sorted data");
+             a.Sort();
+             foreach(int o in a)
+             {
+                 Console.WriteLine(o);
+             }
+             }
+        public static void stud()
+        {
+            ArrayList arr = new ArrayList();
+            arr.Add("Harsha");
+            arr.Add("varsha");
+            arr.Add("Sparsh");
+            arr.Add("Tim");
+            arr.Add("Joe");
+            foreach (string s in arr)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine("name in descending order:");
+            arr.Reverse();
+            foreach (string s in arr)
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        public static void Book()
+        {
+            Hashtable h = new Hashtable();
+            h.Add(1022, "Book1");
+            h.Add(1011, "Book2");
+            h.Add(1024, "Book3");
+            h.Add(1035, "Book4");
+         
+            foreach(var k in h.Keys)
+            {
+                Console.WriteLine("bid:{0} Name:{1}", k, h[k]);
+            }
+           
+        }
+        public static void emp()
+        {
+            SortedList s=new SortedList();
+            {
+                s.Add(1042, "Abi");
+                s.Add(1021, "Maya");
+                s.Add(1036, "Kavya");
+                s.Add(10, "Ram");
+            }
+            foreach(int i in s.Keys)
+            {
+                Console.WriteLine("eid:{0} name:{1}", i, s[i]);
+            }
+        }
+        public static void Student()
+        {
+            ArrayList arr = new ArrayList();
+            Program s1=new Program() { s_id=1,s_name="Manu",s_branch="ECE"};
+            Program s2 = new Program() { s_id = 2, s_name = "Manu", s_branch = "ECE" };
+            Program s3 = new Program() { s_id = 3, s_name = "Banu", s_branch = "CSE" };
+            Program s4 = new Program() { s_id = 4, s_name = "Anu", s_branch = "ME" };
+            Program s5 = new Program() { s_id = 5, s_name = "Sonu", s_branch = "CIVIL" };
+            arr.Add(s1);
+            arr.Add(s2);    
+            arr.Add(s3);
+            arr.Add(s4);
+            arr.Add(s5);
+            foreach(Program s in arr)
+            {
+                Console.WriteLine("id:{0} name:{1} branch:{2}",s.s_id,s.s_name,s.s_branch);
+            }
+        }
+
+
+        public static void Main(string[] args)
+        {
+
+            // Q();
+            //stud();
+            // Book();
+            //emp();
+            Student();
+            Console.ReadKey();
+        }
+    }
+}
+
