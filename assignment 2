@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Input Type Demo</h1>
+    <form action="https://facebook.com/my-account">
+        Name : <input type="text" style="text-transform:uppercase" required value=""><br><br />
+        Age : <input type="number" required size="2" min="20" max="45" value=""><br><br />
+        Contact no : <input type="tel" pattern="[789][0-9]{9}" required maxlength="10" value=""><br><br />
+        Email :      <input type="email" required value=""><br><br />
+        Date Of Birth : <input type="date" required value=""><br><br />
+        WEbsite Url :    <input type="url" required value=""><br><br />
+        <input type="submit" value="Submit"><br><br />
+        
+
+
+
+    </form>
+
+</body>
+</html>
