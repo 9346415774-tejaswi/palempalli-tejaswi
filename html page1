@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="styleSheet1.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body><h1>Student Details</h1>
+      <form>
+
+          Name* : <input type="text" style="text-transform:uppercase" required value=""><br><br />
+          Roll No* : <input type="number" required size="2" min="1" vslue=""><br><br />
+          Date Of Join* : <input type="date" required value=""><br><br />
+          Course Name* :  <select name="Course" id="Course">
+              <option value="">Select the course</option>
+              <option value="c#">C#</option>
+              <option value="asp.net">ASP.NET</option>
+              <option value="Ado.Net">ADO.NET</option>
+              <option value="sql server 2005">SQL Server 2005</option>
+              <option value="Ajax"></option>
+          </select><br><br />
+          Course Duration : <select>
+              <option value="9-5">9-5</option>
+              <option value="9-1">9-1</option>
+              <option value="2-5">2-5</option>
+              <option value="5-7">5-7</option>
+          </select><br><br />
+          Course Fee : <input type="text" value=""><br><br />
+          <button type="button" value="Cancle">Cancle</button>
+          <button type="submit" value="Submit">Submit</button>
+
+
+
+      </form>
+
+</body>
+</html>
