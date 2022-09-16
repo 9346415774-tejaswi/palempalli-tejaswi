@@ -1,0 +1,30 @@
+﻿body{
+    background-color:grey;
+}
+h1 {
+    color: white;
+    background-color:crimson;
+    border: 3px solid blue;
+    height: 100px;
+}
+form{
+    background-color:cyan;
+    height:750px;
+    font-size:20px;
+    color:saddlebrown;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+input{
+    background-color:green;
+    font-size:15px;
+
+}
+select{
+    background-color:green;
+}
+button{
+    background-color:black;
+    font-size:15px;
+    color:white;
+    padding:10px 25px;
+}
